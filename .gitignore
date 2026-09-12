@@ -1,0 +1,22 @@
+# Fotos originais soltas na raiz (versões já otimizadas vivem em assets/)
+*.jpg
+*.jpeg
+*.JPG
+*.JPEG
+!assets/*.jpg
+!assets/*.jpeg
+!assets/*.JPG
+!assets/*.JPEG
+
+# Imagens de trabalho não utilizadas no site
+ChatGPT Image*.png
+
+# Referência que já foi incorporada ao site (assets/gifts.js + main.js)
+lista-presentes-pix.html
+
+# Configuração local do Claude Code (preview do site durante os testes)
+.claude/
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
