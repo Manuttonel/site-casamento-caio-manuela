@@ -137,8 +137,13 @@ p { line-height: 1.85; color: var(--ink-soft); font-size: 15px; }
 .cm-note--dark strong, .cm-note--dark p { color: var(--paper); }
 
 /* ---------- Nav ---------- */
+.cm-preview-banner {
+    background: var(--olive-900); color: var(--cream); text-align: center;
+    font-size: 11.5px; letter-spacing: .02em; line-height: 1.6;
+    padding: 10px 6%; border-bottom: 1px solid var(--gold);
+}
 .cm-nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    position: sticky; top: 0; left: 0; right: 0; z-index: 50;
     display: flex; align-items: center; justify-content: space-between;
     padding: 18px 6%; background: rgba(34, 38, 26, .28); backdrop-filter: blur(10px);
 }
