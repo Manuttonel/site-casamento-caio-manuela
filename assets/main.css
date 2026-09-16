@@ -17,6 +17,7 @@
     --cream: #f1efe4;
     --paper: #faf8f0;
     --paper-2: #f1ede1;
+    --gold: #c9a24b;
     --line: rgba(47, 58, 26, .16);
     --shadow: 0 18px 45px rgba(34, 38, 26, .12);
     --shadow-lg: 0 30px 70px rgba(34, 38, 26, .18);
@@ -129,7 +130,8 @@ p { line-height: 1.85; color: var(--ink-soft); font-size: 15px; }
     border-left: 3px solid var(--olive-500); background: var(--paper-2);
     padding: 22px 24px; margin: 28px 0;
 }
-.cm-note strong { display: block; font-family: "Cormorant Garamond", serif; font-size: 22px; margin-bottom: 8px; color: var(--ink); }
+.cm-note strong { display: flex; align-items: center; gap: 10px; font-family: "Cormorant Garamond", serif; font-size: 22px; margin-bottom: 8px; color: var(--ink); }
+.cm-note strong svg { width: 22px; height: 22px; flex-shrink: 0; color: currentColor; }
 .cm-note p { font-size: 13.5px; margin-top: 8px; }
 .cm-note--dark { background: rgba(241, 239, 228, .07); border-color: var(--sage); }
 .cm-note--dark strong, .cm-note--dark p { color: var(--paper); }
@@ -191,7 +193,13 @@ p { line-height: 1.85; color: var(--ink-soft); font-size: 15px; }
 .cm-strip__track span { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--sage); }
 
 /* ---------- Presentes ---------- */
-.cm-gift { background: var(--olive-700); padding: 100px 6%; }
+.cm-gift { background: var(--olive-700); padding: 100px 6%; position: relative; overflow: hidden; }
+.cm-gift__bg {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center 22%;
+    opacity: .28; mix-blend-mode: multiply; pointer-events: none;
+}
+.cm-gift > :not(img.cm-gift__bg) { position: relative; z-index: 1; }
 .cm-gift__intro { max-width: 720px; margin: 0 auto; text-align: center; }
 .cm-gift__intro .cm-eyebrow { justify-content: center; }
 .cm-gift p { color: rgba(241, 239, 228, .82); }
@@ -205,6 +213,12 @@ p { line-height: 1.85; color: var(--ink-soft); font-size: 15px; }
 .cm-note--compact p { font-size: 12.5px; margin-top: 0; color: var(--ink-soft) !important; }
 
 .cm-gift__actions { margin-top: 30px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.cm-btn--gift {
+    display: inline-flex; align-items: center; gap: 10px;
+    border: 1px solid var(--gold); box-shadow: 0 0 0 3px rgba(201, 162, 75, .18);
+}
+.cm-btn--gift:hover { box-shadow: 0 0 0 4px rgba(201, 162, 75, .28); }
+.cm-btn--gift svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--gold); }
 .cm-gift__actions span { font-size: 11.5px; color: rgba(241, 239, 228, .62); max-width: 320px; text-align: center; }
 
 .cm-gift__catalog { max-width: 340px; margin: 48px auto 0; }
@@ -247,12 +261,28 @@ p { line-height: 1.85; color: var(--ink-soft); font-size: 15px; }
 .cm-closed p { margin-top: 8px; }
 
 /* ---------- Contador ---------- */
-.cm-countdown { background: var(--ink); color: var(--cream); text-align: center; padding: 56px 6%; }
-.cm-countdown__row { display: inline-flex; align-items: center; gap: 22px; flex-wrap: wrap; justify-content: center; }
-.cm-countdown__unit strong { display: block; font-family: "Cormorant Garamond", serif; font-size: clamp(34px, 5vw, 52px); font-weight: 400; }
-.cm-countdown__unit span { font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--sage); }
-.cm-countdown__div { width: 1px; height: 34px; background: rgba(241, 239, 228, .25); }
-.cm-countdown p { margin-top: 18px; color: rgba(241, 239, 228, .7); font-size: 12.5px; letter-spacing: .05em; }
+.cm-countdown { background: var(--ink); color: var(--cream); text-align: center; padding: 64px 6%; }
+.cm-countdown__row { display: inline-flex; align-items: center; gap: 18px; flex-wrap: wrap; justify-content: center; }
+.cm-countdown__unit {
+    min-width: 96px; padding: 22px 18px 18px;
+    background: linear-gradient(150deg, var(--olive-500) 0%, var(--olive-700) 78%);
+    border: 1px solid rgba(241, 239, 228, .12);
+    border-radius: 20px;
+    box-shadow:
+        0 14px 26px rgba(0, 0, 0, .35),
+        inset 0 1px 0 rgba(255, 255, 255, .18),
+        inset 0 -10px 16px rgba(0, 0, 0, .22);
+}
+.cm-countdown__unit strong {
+    display: block; font-family: "Cormorant Garamond", serif; font-size: clamp(34px, 5vw, 52px); font-weight: 400;
+    color: var(--sage); text-shadow: 0 2px 1px rgba(0, 0, 0, .4), 0 0 20px rgba(159, 174, 111, .35);
+}
+.cm-countdown__unit span { display: block; margin-top: 4px; font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: rgba(241, 239, 228, .75); }
+.cm-countdown__div {
+    width: 7px; height: 7px; border-radius: 50%; align-self: center;
+    background: var(--olive-300); box-shadow: 0 0 10px 2px rgba(159, 174, 111, .55);
+}
+.cm-countdown p { margin-top: 22px; color: rgba(241, 239, 228, .7); font-size: 12.5px; letter-spacing: .05em; }
 
 /* ---------- Boas-vindas ---------- */
 .cm-welcome {
@@ -290,8 +320,11 @@ p { line-height: 1.85; color: var(--ink-soft); font-size: 15px; }
 .cm-carousel__dots button.is-active { background: var(--cream); }
 
 /* ---------- Informações do casamento ---------- */
-.cm-info { max-width: var(--maxw); margin: 0 auto; padding: 100px 6%; text-align: center; }
-.cm-info__grid { margin-top: 56px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; text-align: left; }
+.cm-info {
+    padding: 100px 6%; text-align: center;
+    background: linear-gradient(160deg, var(--sage) 0%, var(--olive-300) 55%, var(--olive-400) 100%);
+}
+.cm-info__grid { max-width: var(--maxw); margin: 56px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; text-align: left; }
 .cm-info h3 { font-family: "Cormorant Garamond", serif; font-size: 26px; margin-bottom: 10px; }
 .cm-swatch { margin-top: 20px; padding-top: 16px; border-top: 1px dashed var(--line); }
 .cm-swatch > strong { display: block; font-size: 13.5px; font-weight: 700; color: var(--olive-700); margin-bottom: 12px; }
@@ -347,8 +380,16 @@ p { line-height: 1.85; color: var(--ink-soft); font-size: 15px; }
 .cm-care { max-width: var(--maxw); margin: 0 auto; padding: 100px 6%; }
 .cm-care__grid { margin-top: 56px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 30px; align-items: start; }
 .cm-hotels { list-style: none; margin-top: 22px; display: grid; gap: 14px; }
-.cm-hotels li { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--line); font-size: 13.5px; }
-.cm-hotels a { color: var(--olive-600); text-decoration: none; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; font-weight: 600; }
+.cm-hotels li { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--line); font-size: 13.5px; }
+.cm-hotels a {
+    display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0;
+    background: var(--olive-600); color: var(--cream); text-decoration: none;
+    font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em; font-weight: 600;
+    padding: 9px 16px; border-radius: 999px; transition: background .2s, transform .2s;
+}
+.cm-hotels a:hover { background: var(--olive-700); transform: translateY(-2px); }
+.cm-parking-note { margin-top: 18px; font-size: 12.5px; line-height: 1.7; color: var(--ink-soft); }
+.cm-parking-note strong { color: var(--olive-700); }
 .cm-venueLabel { font-family: "Cormorant Garamond", serif; font-size: 20px; font-style: italic; color: var(--olive-600); margin-top: 6px; }
 .cm-map { aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid var(--line); margin-bottom: 14px; }
 .cm-map iframe { width: 100%; height: 100%; border: none; filter: grayscale(.15) contrast(.97); }
@@ -367,7 +408,13 @@ p { line-height: 1.85; color: var(--ink-soft); font-size: 15px; }
 .cm-faq__card strong { color: var(--cream); }
 
 /* ---------- Rodapé ---------- */
-.cm-footer { background: var(--ink); color: var(--cream); text-align: center; padding: 90px 6% 60px; }
+.cm-footer { background: var(--ink); color: var(--cream); text-align: center; padding: 90px 6% 60px; position: relative; overflow: hidden; }
+.cm-footer__bg {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center 62%;
+    opacity: .22; mix-blend-mode: multiply; pointer-events: none;
+}
+.cm-footer > :not(img.cm-footer__bg) { position: relative; z-index: 1; }
 .cm-footer__crest { width: 74px; margin: 0 auto 20px; }
 .cm-footer__lead { color: rgba(241, 239, 228, .68); max-width: 420px; margin: 14px auto 0; }
 .cm-footer__grid { max-width: 760px; margin: 50px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
