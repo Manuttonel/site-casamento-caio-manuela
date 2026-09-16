@@ -138,14 +138,14 @@ p { line-height: 1.85; color: var(--ink-soft); font-size: 15px; }
 
 /* ---------- Nav ---------- */
 .cm-preview-banner {
-    background: var(--olive-900); color: var(--cream); text-align: center;
+    background: var(--olive-400); color: var(--ink); text-align: center;
     font-size: 11.5px; letter-spacing: .02em; line-height: 1.6;
     padding: 10px 6%; border-bottom: 1px solid var(--gold);
 }
 .cm-nav {
     position: sticky; top: 0; left: 0; right: 0; z-index: 50;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 18px 6%; background: rgba(34, 38, 26, .28); backdrop-filter: blur(10px);
+    padding: 18px 6%; background: rgba(34, 38, 26, .82); backdrop-filter: blur(10px);
 }
 .cm-nav__brand {
     font-family: "Cormorant Garamond", serif; font-size: 22px; letter-spacing: .06em;
