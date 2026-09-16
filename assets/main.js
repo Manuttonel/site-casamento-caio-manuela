@@ -261,6 +261,9 @@
     }
 
     document.addEventListener("DOMContentLoaded", function () {
+        if (!location.hash) {
+            window.scrollTo(0, 0);
+        }
         initNav();
         initCountdown();
         initRsvp();

@@ -440,10 +440,11 @@ p { line-height: 1.85; color: var(--ink-soft); font-size: 15px; }
 @media (max-width: 760px) {
     .cm-nav__links {
         position: fixed; inset: 64px 0 auto 0; background: rgba(24, 27, 17, .97);
-        flex-direction: column; padding: 20px 8%; gap: 4px; transform: translateY(-120%);
-        transition: transform .3s ease;
+        flex-direction: column; padding: 20px 8%; gap: 4px; transform: translateY(-100vh);
+        transition: transform .3s ease, visibility .3s;
+        visibility: hidden; pointer-events: none;
     }
-    .cm-nav__links.is-open { transform: translateY(0); }
+    .cm-nav__links.is-open { transform: translateY(0); visibility: visible; pointer-events: auto; }
     .cm-nav__links a { padding: 12px 0; border-bottom: 1px solid rgba(241, 239, 228, .1); }
     .cm-nav__toggle { display: flex; }
     .cm-hero__title { letter-spacing: 0; }
