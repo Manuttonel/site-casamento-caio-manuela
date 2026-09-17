@@ -88,7 +88,10 @@ p { line-height: 1.85; color: var(--ink-soft); font-size: 15px; }
 .cm-btn--solid:hover { background: var(--olive-700); transform: translateY(-3px); box-shadow: var(--shadow); }
 .cm-btn--ghost { border-color: rgba(241, 239, 228, .55); color: var(--cream); background: rgba(241, 239, 228, .06); }
 .cm-btn--ghost:hover { background: rgba(241, 239, 228, .16); transform: translateY(-3px); }
+.cm-btn--outline { border-color: var(--olive-500); color: var(--olive-700); background: transparent; }
+.cm-btn--outline:hover { background: var(--paper-2); transform: translateY(-3px); }
 .cm-btn--full { width: 100%; }
+.cm-btn--sm { padding: 10px 18px; font-size: 10.5px; }
 
 /* ---------- Cards / molduras (identidade visual própria) ---------- */
 .cm-card {
@@ -453,4 +456,28 @@ p { line-height: 1.85; color: var(--ink-soft); font-size: 15px; }
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
     html { scroll-behavior: auto; }
+}
+
+/* ---------- Modal (aviso de taxa / Pix) ---------- */
+.cm-modal { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.cm-modal[hidden] { display: none; }
+.cm-modal__backdrop { position: absolute; inset: 0; background: rgba(24, 27, 17, .6); }
+.cm-modal__card {
+    position: relative; z-index: 1; width: 100%; max-width: 400px;
+    background: var(--paper); padding: 34px 30px 30px;
+    clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+    box-shadow: var(--shadow-lg);
+}
+.cm-modal__card h3 { font-family: "Cormorant Garamond", serif; font-size: 24px; color: var(--ink); margin-bottom: 12px; }
+.cm-modal__card p { font-size: 13.5px; margin-bottom: 20px; }
+.cm-modal__close {
+    position: absolute; top: 14px; right: 16px; border: none; background: none;
+    font-size: 22px; line-height: 1; color: var(--ink-soft); cursor: pointer;
+}
+.cm-modal__pix { margin-bottom: 22px; }
+.cm-modal__pix > span { display: block; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--olive-600); margin-bottom: 8px; }
+.cm-modal__pixRow { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.cm-modal__pixRow code {
+    flex: 1; min-width: 0; overflow-x: auto; white-space: nowrap;
+    background: var(--paper-2); border: 1px solid var(--line); padding: 10px 12px; font-size: 13px; color: var(--ink);
 }

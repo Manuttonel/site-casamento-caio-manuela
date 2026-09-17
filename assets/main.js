@@ -260,6 +260,49 @@
         }
     }
 
+    /* ---------- Aviso de taxa / Pix ao abrir o Casar.com ---------- */
+    function initGiftModal() {
+        var link = document.getElementById("cm-casarLink");
+        var modal = document.getElementById("cm-giftModal");
+        if (!link || !modal) return;
+
+        var copyBtn = document.getElementById("cm-pixCopyBtn");
+        var pixKeyEl = document.getElementById("cm-pixKeyText");
+
+        function openModal(event) {
+            event.preventDefault();
+            modal.hidden = false;
+        }
+
+        function closeModal() {
+            modal.hidden = true;
+        }
+
+        link.addEventListener("click", openModal);
+
+        modal.querySelectorAll("[data-close]").forEach(function (el) {
+            el.addEventListener("click", closeModal);
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape" && !modal.hidden) closeModal();
+        });
+
+        if (copyBtn && pixKeyEl) {
+            copyBtn.addEventListener("click", function () {
+                var original = copyBtn.textContent;
+                navigator.clipboard.writeText(pixKeyEl.textContent.trim())
+                    .then(function () {
+                        copyBtn.textContent = "Copiado!";
+                        setTimeout(function () { copyBtn.textContent = original; }, 2000);
+                    })
+                    .catch(function () {
+                        window.prompt("Copie a chave Pix abaixo:", pixKeyEl.textContent.trim());
+                    });
+            });
+        }
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
         if (!location.hash) {
             window.scrollTo(0, 0);
@@ -269,6 +312,7 @@
         initRsvp();
         initCarousel();
         initReveal();
+        initGiftModal();
         checkDriveLink();
     });
 })();
